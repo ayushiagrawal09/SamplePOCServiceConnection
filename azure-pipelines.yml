@@ -22,7 +22,6 @@ steps:
     targetType: 'inline'
     script: |
       Write-Host  Reading A value :"$(A)"
-      
-      Write-Host  Reading A value  using env: $env:A##vso[task.setvariable variable=A]10"
+      Write-Host  Reading A value  using env: $env:A"
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
