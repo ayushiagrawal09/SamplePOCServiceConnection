@@ -24,6 +24,6 @@ steps:
       -varArgument "$(A)"
       Param(
       [integer]$varArgument)
-      Write-Host  Reading A value  using env: $env:A"
+      Write-Host  Reading A value  using env: $varArgument"
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
