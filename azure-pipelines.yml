@@ -21,6 +21,6 @@ steps:
   inputs:
     targetType: 'inline'
     script:
-      Write-Host  Reading  value  $env:Load
+      Write-Host  Reading  value  $env:LOAD
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
