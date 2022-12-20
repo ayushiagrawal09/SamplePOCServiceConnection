@@ -16,14 +16,14 @@ steps:
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
-    script: 'Write-Host "##vso[task.setvariable variable=A]10"'
+    script: 'Write-Host "##vso[task.setvariable variable=sauce]10"'
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
     script: |
-      -varArgument "$(A)"
+      -sauceArgument "$(sauce)"
       Param(
-      [integer]$varArgument)
-      Write-Host  Reading A value  using env: $varArgument"
+      [string]$sauceArgument)
+      Write-Host  Reading  value  $env:SAUCE or $sauceArgument
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
