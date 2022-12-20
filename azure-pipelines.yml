@@ -21,7 +21,9 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      Write-Host  Reading A value :"$(A)"
+      -varArgument "$(A)"
+      Param(
+      [integer]$varArgument)
       Write-Host  Reading A value  using env: $env:A"
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
