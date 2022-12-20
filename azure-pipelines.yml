@@ -14,6 +14,10 @@ variables:
 
 steps:
 - task: CmdLine@2
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: 'Write-Host "##vso[task.setvariable variable=A]10"'
   inputs:
     script: |
       - task: PowerShell@2
@@ -25,11 +29,3 @@ steps:
       Write-Host  Reading A value  using env: $env:A##vso[task.setvariable variable=A]10"
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
-- task: AzurePowerShell@5
-  inputs:
-    ScriptType: 'InlineScript'
-    Inline: |
-      # You can write your azure powershell scripts inline here. 
-      # You can also pass predefined and custom variables to this script using arguments
-      $(BeforeDrop)=4500
-    preferredAzurePowerShellVersion: '2.*'
